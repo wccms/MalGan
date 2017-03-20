@@ -13,11 +13,12 @@ train_features = []
 train_labels = []
 
 for row in training_data:
-	print row
+	#print row
 	row = [ int(item) for item in row ]
 	train_features.append(row[ : len(row)-1])
-	train_labels.append(row[len(row)-1 : ])
+	train_labels.append(row[len(row)-1 : ][0])
 
+print "Train labels:", train_labels
 positive_labels = [ 1 for item in train_labels if item == 1]
 negative_labels = [1 for item in train_labels if item == 0]
 print "Total training instances:", len(train_features)
@@ -31,7 +32,7 @@ test_features = []
 test_labels = []
 
 for row in testing_data:
-	print row
+	#print row
 	row = [ int(item) for item in row ]
 	test_features.append(row[ : len(row)-1])
 	test_labels.append(row[len(row)-1 : ])

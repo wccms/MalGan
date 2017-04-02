@@ -2,6 +2,7 @@ import csv
 import numpy as np
 from sklearn import svm
 from sklearn.metrics import accuracy_score
+from sklearn.metrics import precision_recall_curve
 
 f = open("/Users/crista/Documents/Michigan/Classes/Security/MalGAN/MalGAN/data/API_truncation50_random_split_trainval_1gram_feature.csv")
 training_data = csv.reader(f)
@@ -39,5 +40,11 @@ for row in testing_data:
 
 print "Total testing instances:", len(test_features)
 predictions = clf.predict(test_features)
+
 accuracy = accuracy_score(test_labels, predictions)
 print "Accuracy:", accuracy
+
+precision, recall, thresholds = precision_recall_curve(test_labels, predictions)
+print "Precision", precision
+print "Recall", recall
+print "Thresholds", thresholds
